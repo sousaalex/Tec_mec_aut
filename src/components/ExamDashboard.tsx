@@ -140,7 +140,6 @@ export function ExamDashboard() {
       <ExamResults
         questions={examQuestions}
         answers={examAnswers}
-        config={examConfig}
         onRestart={handleRestart}
         onBackToDashboard={() => setView('dashboard')}
       />

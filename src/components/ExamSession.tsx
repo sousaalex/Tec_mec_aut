@@ -31,7 +31,7 @@ export interface ExamAnswer {
   timeSpent: number;
 }
 
-export function ExamSession({ questions, config, onFinish, onCancel }: ExamSessionProps) {
+export function ExamSession({ questions, config, onFinish, onCancel: _onCancel }: ExamSessionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<ExamAnswer[]>(
     questions.map((q, i) => ({
@@ -43,7 +43,7 @@ export function ExamSession({ questions, config, onFinish, onCancel }: ExamSessi
   );
   const [timeRemaining, setTimeRemaining] = useState(config.timeLimit * 60);
   const [showConfirmFinish, setShowConfirmFinish] = useState(false);
-  const [startTime] = useState(Date.now());
+  const [_startTime] = useState(Date.now());
 
   // Timer
   useEffect(() => {
