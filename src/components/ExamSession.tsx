@@ -10,9 +10,7 @@ import {
   FileText,
   Calculator,
   BarChart3,
-  Target,
-  CheckCircle2,
-  X
+  Target
 } from 'lucide-react';
 import type { AssessmentQuestion } from '../data/questions_full';
 import type { ExamConfig } from './ExamGenerator';

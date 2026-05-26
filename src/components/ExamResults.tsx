@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Trophy, 
   Clock, 
   CheckCircle2, 
   XCircle, 
@@ -18,25 +17,15 @@ import {
 } from 'lucide-react';
 import type { AssessmentQuestion, QuestionMCQ, QuestionCalc } from '../data/questions_full';
 import type { ExamAnswer } from './ExamSession';
-import type { ExamConfig } from './ExamGenerator';
 
 interface ExamResultsProps {
   questions: AssessmentQuestion[];
   answers: ExamAnswer[];
-  config: ExamConfig;
   onRestart: () => void;
   onBackToDashboard: () => void;
 }
 
-interface QuestionResult {
-  question: AssessmentQuestion;
-  answer: ExamAnswer;
-  isCorrect: boolean;
-  score: number;
-  maxScore: number;
-}
-
-export function ExamResults({ questions, answers, config, onRestart, onBackToDashboard }: ExamResultsProps) {
+export function ExamResults({ questions, answers, onRestart, onBackToDashboard }: ExamResultsProps) {
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<'all' | 'correct' | 'incorrect' | 'flagged'>('all');
 
@@ -72,8 +61,6 @@ export function ExamResults({ questions, answers, config, onRestart, onBackToDas
     const mcqResults = results.filter(r => r.question.type === 'mcq');
     const correctMCQ = mcqResults.filter(r => r.isCorrect).length;
     const totalMCQ = mcqResults.length;
-    const mcqScore = mcqResults.reduce((acc, r) => acc + r.score, 0);
-    const mcqMax = mcqResults.reduce((acc, r) => acc + r.maxScore, 0);
     
     const totalScore = results.reduce((acc, r) => acc + r.score, 0);
     const totalMax = results.reduce((acc, r) => acc + r.maxScore, 0);

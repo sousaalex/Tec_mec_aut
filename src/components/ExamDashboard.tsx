@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   GraduationCap, 
   Clock, 
   Target, 
   BookOpen, 
-  TrendingUp,
   History,
   Play,
-  Settings,
   ChevronRight,
   Trophy,
   BarChart3,
